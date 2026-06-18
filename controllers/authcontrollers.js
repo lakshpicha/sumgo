@@ -66,6 +66,8 @@ exports.login = async (req, res) => {
         }
 
         const token = generateToken(user._id);
+        user.token = token;
+        await user.save();
 
         res.status(200).json({
             message: "Login successful",
@@ -79,4 +81,19 @@ exports.login = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-};
+}; 
+
+exports.logout = async (req, res) => {
+    try{
+        const user =await User.findById(req.user._id);
+        if(user){
+            user.token =null;
+            await user.save();
+            res.status(200).json({message:"Logout successful"});
+        }
+    } 
+
+    catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}

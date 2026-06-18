@@ -5,7 +5,7 @@ require('dotenv').config();
 
 
 const studentRoutes = require('./routes/studentRoutes');
-const teacherRoutes = require('./routes/teacherRoutes');
+//const teacherRoutes = require('./routes/teacherRoutes');
 const courseRoutes = require('./routes/courseRoutes');
 const departmentRoutes = require('./routes/departmentRoutes');
 const bookRoutes = require('./routes/bookRoutes');
@@ -21,7 +21,7 @@ connectDB();
 
 app.use('/auth', authRoutes);
 app.use('/student', studentRoutes);
-app.use('/', teacherRoutes);
+// app.use('/teacher', teacherRoutes);
 app.use('/', courseRoutes);
 // app.use('/', departmentRoutes);
 app.use('/', bookRoutes);

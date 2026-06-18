@@ -19,8 +19,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required"],
         minlength: [6, "Password must be at least 6 characters"]
-    }
-}, { timestamps: true });
+    },
+     token: {
+        type: String,
+        default: true
+     }
+  
+}, { timestamps: true }); 
+ 
 
 // Hash the password before saving (only when it changed)
 userSchema.pre("save", async function () {
